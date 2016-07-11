@@ -17,7 +17,6 @@ body{
 }
 
 #sections{
-  height: 2000px;
   width: 340px;
   float: left;
 }
@@ -27,7 +26,6 @@ body{
   opacity: .1;
   margin-bottom:200px;
 }
-
 
 #sections > div.graph-scroll-active{
   opacity: 1;
@@ -74,7 +72,6 @@ svg{
 </style>
 
 <h1><a href='https://github.com/1wheel/graph-scroll'>graph-scroll.js</a></h1>
-<h3>Simple scrolling events for d3 graphics.</h3>
 
 <div id='container'>
 
@@ -119,7 +116,7 @@ svg{
 <script>
 
 var width = 500,
-    height = 700,
+    height = 500,
     r = 40
 
 var svg = d3.select('#graph')
@@ -138,18 +135,20 @@ var gs = graphScroll()
 
       console.log(i+'th section active');
 
-      // var pos = [ {cx: width - r,         cy: r},
-      //             {cx: r,                 cy: r},
-      //             {cx: width - r, cy: height - r},
-      //             {cx: width/2,   cy: height/2} ][i]
+      var pos = [ {cx: width - r,         cy: r},
+                  {cx: r,                 cy: r},
+                  {cx: width - r, cy: height - r},
+                  {cx: width/2,   cy: height/2} ][i];
 
-      // circle.transition().duration(1000)
-      //     .attr(pos)
-      //   .transition()
-      //     .style('fill', colors[i])
+      circle
+          .style('fill', colors[i])
+          .transition()
+          .duration(1000)
+          .attr(pos);
+
     })
 
-// d3.select('#source')
-//     .style({ padding: '500px'})
+d3.select('#source')
+    .style({ padding: '500px'})
 
 </script>
