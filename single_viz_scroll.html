@@ -17,6 +17,7 @@ body{
 }
 
 #sections{
+  margin-top: 50px;
   width: 340px;
   float: left;
 }
@@ -32,7 +33,7 @@ body{
 }
 
 #graph{
-  margin-top: 20px;
+  margin-top: 50px;
   float: left;
   margin-left: 40px;
 }
@@ -47,6 +48,10 @@ body{
   position: absolute;
   bottom: 0px;
   margin-left: 380px;
+}
+
+#end-div{
+  height: 100px;
 }
 
 h1{
@@ -71,35 +76,42 @@ svg{
 
 </style>
 
-<h1><a href='https://github.com/1wheel/graph-scroll'>graph-scroll.js</a></h1>
+<h1>Title</h1>
 
 <div id='container'>
 
   <div id='sections'>
 
     <div>
-      <h3>Connect text and graphics</h3>
-      <span class='mono'>graph-scroll</span>
-      takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
-
+      one
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
+      </p>
     </div>
 
     <div>
-      <h3>Highlight active text</h3>
-      The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css:
-    </div>
-
-
-    <div>
-      <h3>Headers and footers</h3>
-      To support headers and intro images/text, the explanatory text and graphic are wrapped with a container element:
-      and passed to <span class='mono'>graphScroll</span>
+     two
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
+      </p>
     </div>
 
     <div>
-      <h3>Sticky graph</h3>
-      When the graph scrolls out of view, it is classed with <span class='mono'>graph-scroll-fixed</span>. With a little bit of css, the graph element snaps to the top of the page while the text scrolls by.
+      three
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
+      </p>
     </div>
+
+    <div>
+      four
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
+      </p>
+    </div>
+
+    <!-- <div id='end-div'>
+    </div> -->
 
   </div>
 
@@ -115,40 +127,43 @@ svg{
 <script src="graph-scroll.js"></script>
 <script>
 
-var width = 500,
-    height = 500,
-    r = 40
+  var width = 500,
+      height = 500,
+      r = 40
 
-var svg = d3.select('#graph')
-  .append('svg')
+  var svg = d3.select('#graph')
+    .append('svg')
     .attr({width: width, height: height})
 
-var circle = svg.append('circle')
-    .attr({cx: 0, cy: 0, r: r})
+  var circle = svg.append('circle')
+      .attr({cx: 0, cy: 0, r: r})
 
-var colors = ['orange', 'purple', 'steelblue', 'black']
-var gs = graphScroll()
-    .container(d3.select('#container'))
-    .graph(d3.selectAll('#graph'))
-    .sections(d3.selectAll('#sections > div'))
-    .on('active', function(i){
+  var colors = ['orange', 'purple', 'steelblue', 'black']
 
-      console.log(i+'th section active');
+  // define the container and graph
+  var gs = graphScroll()
+      .container(d3.select('#container'))
+      .graph(d3.selectAll('#graph'))
+      .sections(d3.selectAll('#sections > div'))
+      .on('active', function(i){
 
-      var pos = [ {cx: width - r,         cy: r},
-                  {cx: r,                 cy: r},
-                  {cx: width - r, cy: height - r},
-                  {cx: width/2,   cy: height/2} ][i];
+        console.log(i+'th section active');
 
-      circle
-          .style('fill', colors[i])
-          .transition()
-          .duration(1000)
-          .attr(pos);
+        var pos = [ {cx: width - r,         cy: r},
+                    {cx: r,                 cy: r},
+                    {cx: width - r, cy: height - r},
+                    {cx: width/2,   cy: height/2} ][i];
 
-    })
+        circle
+            .style('fill', colors[i])
+            .transition()
+            .duration(1000)
+            .attr(pos);
 
-d3.select('#source')
-    .style({ padding: '500px'})
+      })
+
+  // this is necessary for scrolling to see the last section
+  d3.select('#source')
+      .style({ 'margin-top': '500px'})
 
 </script>
