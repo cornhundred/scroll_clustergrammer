@@ -10,48 +10,46 @@ body{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#container, #container2{
+#container{
   position: relative;
   width: 100%;
   overflow: auto;
 }
 
-#sections, #sections2{
+#sections{
   width: 340px;
   float: left;
 }
 
-#sections > div, #sections2 > div{
+#sections > div{
   background: white;
-  opacity: .2;
-  margin-bottom:120px;
+  opacity: .1;
+  margin-bottom:200px;
 }
 
 
-
-
-#sections > div.graph-scroll-active, #sections2 > div.graph-scroll-active{
+#sections > div.graph-scroll-active{
   opacity: 1;
 }
 
 
-#graph, #graph2{
+#graph{
   margin-top: 20px;
   float: left;
   margin-left: 40px;
 }
 
-#graph.graph-scroll-fixed, #graph2.graph-scroll-fixed{
+#graph.graph-scroll-fixed{
   position: fixed;
   top: 0px;
   margin-left: 380px;
 }
 
-/*#graph.graph-scroll-below, #graph2.graph-scroll-below {
+#graph.graph-scroll-below{
   position: absolute;
   bottom: 0px;
   margin-left: 380px;
-}*/
+}
 
 h1{
   margin: 50px;
@@ -127,39 +125,16 @@ graphScroll()
 
     and passed to <span class='mono'>graphScroll</span>
 
-<pre>
-  graphScroll()
-    .graph(d3.selectAll('#graph'))
-    .container(d3.select('#container'))
-<pre>
+
     </div>
 
     <div>
       <h3>Sticky graph</h3>
       When the graph scrolls out of view, it is classed with <span class='mono'>graph-scroll-fixed</span>. With a little bit of css, the graph element snaps to the top of the page while the text scrolls by.
-<pre>
-  #container{
-    position: relative;
-    overflow: auto;
-  }
+    </div>
 
-  #sections{
-    width: 200px;
-    float: left;
-  }
-
-  #graph{
-    width: 600px;
-    float: left;
-    margin-left: 40px;
-  }
-
-  #graph.graph-scroll-fixed{
-    position: fixed;
-    top: 0px;
-    margin-left: 240px;
-  }
-</pre>
+    <div>
+    <h3>something</h3>
     </div>
 
   </div>
@@ -207,7 +182,7 @@ var gs = graphScroll()
       //     .style('fill', colors[i])
     })
 
-d3.select('#source')
-    .style({ padding: '100px'})
+// d3.select('#source')
+//     .style({ padding: '500px'})
 
 </script>
