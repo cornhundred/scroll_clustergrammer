@@ -5,7 +5,7 @@
 <style>
 
 body{
-  width: 900px;
+  width: 1200px;
   margin: 0px auto;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -18,13 +18,13 @@ body{
 
 #sections{
   margin-top: 50px;
-  width: 340px;
+  width: 300px;
   float: left;
 }
 
 #sections > div{
   background: white;
-  opacity: .1;
+  opacity: 0.2;
   margin-bottom:200px;
 }
 
@@ -41,7 +41,7 @@ body{
 #graph.graph-scroll-fixed{
   position: fixed;
   top: 0px;
-  margin-left: 380px;
+  margin-left: 340px;
 }
 
 #graph.graph-scroll-below{
@@ -127,7 +127,7 @@ svg{
 <script src="graph-scroll.js"></script>
 <script>
 
-  var width = 500,
+  var width = 800,
       height = 500,
       r = 40
 
@@ -147,8 +147,6 @@ svg{
       .sections(d3.selectAll('#sections > div'))
       .on('active', function(i){
 
-        console.log(i+'th section active');
-
         var pos = [ {cx: width - r,         cy: r},
                     {cx: r,                 cy: r},
                     {cx: width - r, cy: height - r},
@@ -164,6 +162,6 @@ svg{
 
   // this is necessary for scrolling to see the last section
   d3.select('#source')
-      .style({ 'margin-top': '500px'})
+      .style({ 'margin-top': '400px'})
 
 </script>
