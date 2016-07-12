@@ -29,7 +29,7 @@ function ini_scroll(){
   var gs = graphScroll()
       .container(d3.select('#container'))
       .graph(d3.selectAll('#graph'))
-      .sections(d3.selectAll('#sections > div'))
+      .sections(d3.selectAll('#sections > .instruction'))
       .on('active', function(i){
 
         // Set up something to wait two seconds and then check if the viz is in
