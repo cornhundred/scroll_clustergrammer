@@ -46,34 +46,31 @@ function ini_scroll(){
           }
         } else if (i===2) {
           if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-            cgm.update_view({'N_row_sum':10})
+            click_reorder_button('row','alpha');
           }
         } else if (i===3) {
+          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+            cgm.update_view({'N_row_sum':10})
+          }
+        } else if (i===4) {
           if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
             cgm.update_view({'N_row_sum':'all'})
           }
         }
 
-
-      })
+      });
 
   // this is necessary for scrolling to see the last section
   d3.select('#source')
-      .style({ 'margin-top': '400px'});
-
-  function allow_scroll(){
-    console.log('scroll')
-    d3.select('body').style('overflow','visible');
-  }
+      .style({ 'margin-top': '800px'});
 
 }
 
-// function resize_container(args){
+function click_reorder_button(inst_rc, inst_order){
+  var inst_button = d3.selectAll('.toggle_'+inst_rc+'_order .btn')
+    .filter(function(){
+      return this.__data__ == inst_order;
+    })[0];
 
-//   var screen_width = window.innerWidth;
-//   var screen_height = window.innerHeight - 20;
-
-//   d3.select(args.root)
-//     .style('width', screen_width+'px')
-//     .style('height', screen_height+'px');
-// }
+  $(inst_button).click();
+}
