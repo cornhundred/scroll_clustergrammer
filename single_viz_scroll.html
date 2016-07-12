@@ -36,6 +36,9 @@ body{
   margin-top: 50px;
   float: left;
   margin-left: 40px;
+  width: 800px;
+  height: 500px;
+  background-color: blue;
 }
 
 #graph.graph-scroll-fixed{
@@ -71,7 +74,7 @@ circle{
 }
 
 svg{
-  background-color: #eee;
+  background-color: red;
 }
 
 </style>
@@ -125,18 +128,30 @@ svg{
 
 <script src="d3.v3.js"></script>
 <script src="graph-scroll.js"></script>
+
+<script src="lib/js/jquery-1.11.2.min.js"></script>
+<script src="lib/js/jquery-ui.js"></script>
+<script src="lib/js/underscore-min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/blockUI.js"></script>
+
+<!-- Clustergrammer JS -->
+<script src='clustergrammer.js'></script>
+<!-- <script src='load_clustergram.js'></script> -->
+
+
 <script>
 
   var width = 800,
       height = 500,
       r = 40
 
-  var svg = d3.select('#graph')
-    .append('svg')
-    .attr({width: width, height: height})
+  // var svg = d3.select('#graph')
+  //   .append('svg')
+  //   .attr({width: width, height: height})
 
-  var circle = svg.append('circle')
-      .attr({cx: 0, cy: 0, r: r})
+  // var circle = svg.append('circle')
+  //     .attr({cx: 0, cy: 0, r: r})
 
   var colors = ['orange', 'purple', 'steelblue', 'black']
 
@@ -147,21 +162,27 @@ svg{
       .sections(d3.selectAll('#sections > div'))
       .on('active', function(i){
 
-        var pos = [ {cx: width - r,         cy: r},
-                    {cx: r,                 cy: r},
-                    {cx: width - r, cy: height - r},
-                    {cx: width/2,   cy: height/2} ][i];
+        // var pos = [ {cx: width - r,         cy: r},
+        //             {cx: r,                 cy: r},
+        //             {cx: width - r, cy: height - r},
+        //             {cx: width/2,   cy: height/2} ][i];
 
-        circle
-            .style('fill', colors[i])
-            .transition()
-            .duration(1000)
-            .attr(pos);
+        // circle
+        //     .style('fill', colors[i])
+        //     .transition()
+        //     .duration(1000)
+        //     .attr(pos);
 
       })
 
   // this is necessary for scrolling to see the last section
   d3.select('#source')
-      .style({ 'margin-top': '400px'})
+      .style({ 'margin-top': '400px'});
+
+  function allow_scroll(){
+    console.log('scroll')
+    d3.select('body').style('overflow','visible');
+  }
+
 
 </script>
