@@ -33,7 +33,7 @@ body{
 #sections > div{
   background: white;
   opacity: 0.2;
-  margin-bottom:200px;
+  margin-bottom:100px;
 }
 
 #sections > div.graph-scroll-active{
@@ -45,12 +45,18 @@ body{
   float: left;
   margin-left: 40px;
   width: 950px;
-  height: 600px;
+  height: 700px;
 }
 
 #graph.graph-scroll-fixed{
   position: fixed;
   top: 0px;
+  margin-left: 240px;
+}
+
+#graph.graph-scroll-below, #graph2.graph-scroll-below {
+  position: absolute;
+  bottom: 0px;
   margin-left: 240px;
 }
 
@@ -62,7 +68,7 @@ h1{
   margin: 50px;
 }
 
-h1, h3{
+h1{
   text-align: center;
 }
 
@@ -74,29 +80,29 @@ h1, h3{
 
   <div id='sections'>
 
-    <div>
-      one
+    <div class='instruction'>
+    <h3>Initialize showing all rows</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
+      </p>
+    </div>
+
+    <div class='instruction'>
+     <h3>show top 20 rows based on sum</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
+      </p>
+    </div>
+
+    <div class='instruction'>
+      <h3>show top 10 rows based on sum</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
       </p>
     </div>
 
     <div>
-     two
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
-      </p>
-    </div>
-
-    <div>
-      three
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
-      </p>
-    </div>
-
-    <div>
-      four
+      <h3>reset to all rows</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, ante non dapibus rhoncus, sapien massa ullamcorper risus, ac faucibus metus orci in sem. Sed a tellus pulvinar, scelerisque urna ut, venenatis sapien. Fusce accumsan tincidunt orci, eget porta nisl aliquam eu. Proin faucibus commodo blandit. Phasellus egestas diam dolor, pellentesque aliquet felis molestie quis. Aliquam dignissim dui a est ornare, ut dictum sem sollicitudin. Aliquam consequat eros at aliquam consequat. Cras at dapibus nisi, nec posuere nunc. Proin mollis ligula in felis gravida vehicula. In non nibh massa. Vestibulum ut rhoncus tortor. Sed feugiat non lectus non fermentum.
       </p>
@@ -114,7 +120,6 @@ h1, h3{
 
 <h3 id='source'><a href='https://github.com/1wheel/graph-scroll'>contribute/view on github</a></h3>
 
-
 <script src="d3.v3.js"></script>
 <script src="graph-scroll.js"></script>
 
@@ -127,5 +132,3 @@ h1, h3{
 <!-- Clustergrammer JS -->
 <script src='clustergrammer.js'></script>
 <script src='load_clustergram.js'></script>
-
-

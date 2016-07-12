@@ -5,8 +5,8 @@ d3.json('json/mult_view.json', function(network_data){
   // define arguments object
   var args = {
     root: '#graph',
-    'network_data': network_data,
-    'about':'Zoom, scroll, and click buttons to interact with the clustergram.'
+    'network_data': network_data
+    // 'about':'Zoom, scroll, and click buttons to interact with the clustergram.'
   };
 
   // resize_container(args);
@@ -20,9 +20,6 @@ d3.json('json/mult_view.json', function(network_data){
 
   ini_scroll();
 
-
-
-
 });
 
 
@@ -35,17 +32,28 @@ function ini_scroll(){
       .sections(d3.selectAll('#sections > div'))
       .on('active', function(i){
 
+        // Set up something to wait two seconds and then check if the viz is in
+        // the requested state. All state instructions should be given at each step
+
         if (i === 0){
-          cgm.update_view({'N_row_sum':'all'})
+          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+            cgm.update_view({'N_row_sum':'all'})
+          }
         }
         else if (i===1){
-          cgm.update_view({'N_row_sum':20})
+          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+            cgm.update_view({'N_row_sum':20})
+          }
         } else if (i===2) {
-          cgm.update_view({'N_row_sum':10})
+          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+            cgm.update_view({'N_row_sum':10})
+          }
+        } else if (i===3) {
+          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+            cgm.update_view({'N_row_sum':'all'})
+          }
         }
-        // } elseif (i == 2){
-        //   cgm.update_view({'N_row_sum':10})
-        // }
+
 
       })
 
