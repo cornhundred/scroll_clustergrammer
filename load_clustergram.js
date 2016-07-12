@@ -18,10 +18,47 @@ d3.json('json/mult_view.json', function(network_data){
 
   cgm = Clustergrammer(args);
 
-  d3.select(cgm.params.root + ' .wait_message').remove();
+  ini_scroll();
+
+
+
 
 });
 
+
+function ini_scroll(){
+
+  // define the container and graph
+  var gs = graphScroll()
+      .container(d3.select('#container'))
+      .graph(d3.selectAll('#graph'))
+      .sections(d3.selectAll('#sections > div'))
+      .on('active', function(i){
+
+        if (i === 0){
+          cgm.update_view({'N_row_sum':'all'})
+        }
+        else if (i===1){
+          cgm.update_view({'N_row_sum':20})
+        } else if (i===2) {
+          cgm.update_view({'N_row_sum':10})
+        }
+        // } elseif (i == 2){
+        //   cgm.update_view({'N_row_sum':10})
+        // }
+
+      })
+
+  // this is necessary for scrolling to see the last section
+  d3.select('#source')
+      .style({ 'margin-top': '400px'});
+
+  function allow_scroll(){
+    console.log('scroll')
+    d3.select('body').style('overflow','visible');
+  }
+
+}
 
 // function resize_container(args){
 

@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+
+<head>
+  <link href="lib/css/bootstrap.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="lib/css/jquery-ui.css" rel="stylesheet">
+  <link rel="stylesheet" href="lib/font-awesome.min.css">
+</head>
+
 <style>
 
 body{
@@ -18,7 +26,7 @@ body{
 
 #sections{
   margin-top: 50px;
-  width: 300px;
+  width: 200px;
   float: left;
 }
 
@@ -36,21 +44,14 @@ body{
   margin-top: 50px;
   float: left;
   margin-left: 40px;
-  width: 800px;
-  height: 500px;
-  background-color: blue;
+  width: 950px;
+  height: 600px;
 }
 
 #graph.graph-scroll-fixed{
   position: fixed;
   top: 0px;
-  margin-left: 340px;
-}
-
-#graph.graph-scroll-below{
-  position: absolute;
-  bottom: 0px;
-  margin-left: 380px;
+  margin-left: 240px;
 }
 
 #end-div{
@@ -65,21 +66,9 @@ h1, h3{
   text-align: center;
 }
 
-circle{
-  fill: steelblue;
-}
-
-.mono{
-  font-family: monospace;
-}
-
-svg{
-  background-color: red;
-}
-
 </style>
 
-<h1>Title</h1>
+<h1>Clustergrammer Tour</h1>
 
 <div id='container'>
 
@@ -118,7 +107,7 @@ svg{
 
   </div>
 
-  <div id='graph'></div>
+  <div id='graph' class='graph-scroll-fixed'></div>
 </div>
 
 
@@ -137,52 +126,6 @@ svg{
 
 <!-- Clustergrammer JS -->
 <script src='clustergrammer.js'></script>
-<!-- <script src='load_clustergram.js'></script> -->
+<script src='load_clustergram.js'></script>
 
 
-<script>
-
-  var width = 800,
-      height = 500,
-      r = 40
-
-  // var svg = d3.select('#graph')
-  //   .append('svg')
-  //   .attr({width: width, height: height})
-
-  // var circle = svg.append('circle')
-  //     .attr({cx: 0, cy: 0, r: r})
-
-  var colors = ['orange', 'purple', 'steelblue', 'black']
-
-  // define the container and graph
-  var gs = graphScroll()
-      .container(d3.select('#container'))
-      .graph(d3.selectAll('#graph'))
-      .sections(d3.selectAll('#sections > div'))
-      .on('active', function(i){
-
-        // var pos = [ {cx: width - r,         cy: r},
-        //             {cx: r,                 cy: r},
-        //             {cx: width - r, cy: height - r},
-        //             {cx: width/2,   cy: height/2} ][i];
-
-        // circle
-        //     .style('fill', colors[i])
-        //     .transition()
-        //     .duration(1000)
-        //     .attr(pos);
-
-      })
-
-  // this is necessary for scrolling to see the last section
-  d3.select('#source')
-      .style({ 'margin-top': '400px'});
-
-  function allow_scroll(){
-    console.log('scroll')
-    d3.select('body').style('overflow','visible');
-  }
-
-
-</script>

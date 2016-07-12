@@ -120,7 +120,7 @@ function graphScroll() {
         .on('scroll.gscroll'  + eventId, reposition)
         .on('resize.gscroll'  + eventId, resize)
         .on('keydown.gscroll' + eventId, keydown)
-    
+
     resize()
     d3.timer(function() {
       reposition()
