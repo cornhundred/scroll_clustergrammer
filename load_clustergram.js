@@ -32,8 +32,13 @@ function ini_scroll(){
       .sections(d3.selectAll('#sections > .instruction'))
       .on('active', function(i){
 
-        // Set up something to wait two seconds and then check if the viz is in
-        // the requested state. All state instructions should be given at each step
+        ////////////////////////////////////////
+        //  plan
+        ////////////////////////////////////////
+        // 1) if buttons are not active, then wait 2 seconds and check again
+
+        // 2) if after two seconds you are still in the same section and buttons
+        // are active, then redo transformation
 
         has_stopped_db(i);
 
