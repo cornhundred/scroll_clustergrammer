@@ -53,7 +53,6 @@ function click_reorder_button(inst_rc, inst_order){
   $(inst_button).click();
 }
 
-var update_section_db = _.debounce(update_section, 1500);
 
 var section_key = {};
 section_key[0] = initialize_view;
@@ -62,6 +61,7 @@ section_key[2] = reorder_row_alpha;
 section_key[3] = reorder_row_var;
 section_key[4] = run_filter_sum_10;
 section_key[5] = initialize_view;
+section_key[6] = run_conclusions;
 
 
 function initialize_view(){
@@ -89,6 +89,12 @@ function run_filter_sum_10(){
   cgm.update_view({'N_row_sum':10})
 }
 
+function run_conclusions(){
+  console.log('in conclusion')
+}
+
+var update_section_db = _.debounce(update_section, 1500);
+
 function update_section(i){
 
   var inst_function = section_key[i];
@@ -96,7 +102,6 @@ function update_section(i){
   console.log('\nsection '+String(i));
 
   if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-    console.log('do not wait')
     inst_function();
   } else {
 
