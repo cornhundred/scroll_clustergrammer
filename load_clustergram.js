@@ -35,6 +35,8 @@ function ini_scroll(){
         // Set up something to wait two seconds and then check if the viz is in
         // the requested state. All state instructions should be given at each step
 
+        has_stopped_db(i);
+
         if (i === 0){
           if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
             cgm.update_view({'N_row_sum':'all'})
@@ -74,3 +76,7 @@ function click_reorder_button(inst_rc, inst_order){
 
   $(inst_button).click();
 }
+
+var has_stopped = function(i){console.log('has stopped ' + String(i))};
+
+var has_stopped_db = _.debounce(has_stopped, 1000);
