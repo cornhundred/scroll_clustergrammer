@@ -4,6 +4,8 @@ if (ini_window_height > 800){
   ini_window_height = 800;
 }
 
+var inst_section = 0;
+
 d3.select('#graph')
   .style('height', ini_window_height+'px');
 
@@ -97,19 +99,26 @@ var update_section_db = _.debounce(update_section, 1500);
 
 function update_section(i){
 
-  var inst_function = section_key[i];
+  if (inst_section != i){
 
-  console.log('\nsection '+String(i));
+    inst_section = i;
 
-  if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-    inst_function();
+    var inst_function = section_key[i];
+
+    console.log('\nsection '+String(i));
+
+    if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+      inst_function();
+    } else {
+
+      // need to check that you are in the same section
+      ///////////////
+
+      console.log('--- wait until buttons not disabled')
+      setTimeout(inst_function, 2000);
+    }
   } else {
-
-    // need to check that you are in the same section
-    ///////////////
-
-    console.log('--- wait until buttons not disabled')
-    setTimeout(inst_function, 2000);
+    console.log('already in section - do not run\n')
   }
 
 }
