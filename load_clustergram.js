@@ -93,6 +93,8 @@ function run_filter_sum_10(){
 
 function run_conclusions(){
   console.log('in conclusion')
+  click_reorder_button('row','clust');
+  click_reorder_button('col ','clust');
 }
 
 var update_section_db = _.debounce(update_section, 1500);
