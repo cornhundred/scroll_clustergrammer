@@ -32,38 +32,7 @@ function ini_scroll(){
       .sections(d3.selectAll('#sections > .instruction'))
       .on('active', function(i){
 
-        ////////////////////////////////////////
-        //  plan
-        ////////////////////////////////////////
-        // 1) if buttons are not active, then wait 2 seconds and check again
-
-        // 2) if after two seconds you are still in the same section and buttons
-        // are active, then redo transformation
-
-        has_stopped_db(i);
-
-        if (i === 0){
-          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-            cgm.update_view({'N_row_sum':'all'})
-          }
-        }
-        else if (i===1){
-          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-            cgm.update_view({'N_row_sum':20})
-          }
-        } else if (i===2) {
-          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-            click_reorder_button('row','alpha');
-          }
-        } else if (i===3) {
-          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-            cgm.update_view({'N_row_sum':10})
-          }
-        } else if (i===4) {
-          if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-            cgm.update_view({'N_row_sum':'all'})
-          }
-        }
+        update_section_db(i);
 
       });
 
@@ -82,6 +51,40 @@ function click_reorder_button(inst_rc, inst_order){
   $(inst_button).click();
 }
 
-var has_stopped = function(i){console.log('has stopped ' + String(i))};
+var update_section_db = _.debounce(update_section, 1500);
 
-var has_stopped_db = _.debounce(has_stopped, 1000);
+function update_section(i){
+
+  ////////////////////////////////////////
+  //  plan
+  ////////////////////////////////////////
+  // 1) if buttons are not active, then wait 2 seconds and check again
+
+  // 2) if after two seconds you are still in the same section and buttons
+  // are active, then redo transformation
+
+  console.log('updating section ' + String(i));
+
+  if (i === 0){
+    if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+      cgm.update_view({'N_row_sum':'all'})
+    }
+  }
+  else if (i===1){
+    if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+      cgm.update_view({'N_row_sum':20})
+    }
+  } else if (i===2) {
+    if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+      click_reorder_button('row','alpha');
+    }
+  } else if (i===3) {
+    if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+      cgm.update_view({'N_row_sum':10})
+    }
+  } else if (i===4) {
+    if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+      cgm.update_view({'N_row_sum':'all'})
+    }
+  }
+}
