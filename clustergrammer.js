@@ -2000,10 +2000,10 @@ var Clustergrammer =
       toggle_element_display(vis_area, this, 'row');
     });
 
-    // toggle col labels
-    d3.selectAll(params.root + ' .col_label_text').each(function () {
-      toggle_element_display(vis_area, this, 'col');
-    });
+    // // toggle col labels
+    // d3.selectAll(params.root + ' .col_label_text').each(function () {
+    //   toggle_element_display(vis_area, this, 'col');
+    // });
 
     return vis_area;
     };

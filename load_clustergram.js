@@ -1,4 +1,12 @@
 
+var ini_window_height = window.innerHeight - 100;
+if (ini_window_height > 800){
+  ini_window_height = 800;
+}
+console.log('ini_window_height ' + String(ini_window_height))
+d3.select('#graph')
+  .style('height', ini_window_height+'px');
+
 
 d3.json('json/mult_view.json', function(network_data){
 
