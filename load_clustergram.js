@@ -57,63 +57,54 @@ var update_section_db = _.debounce(update_section, 1500);
 
 var section_key = {};
 section_key[0] = initialize_view;
-section_key[1] = run_reorder;
+section_key[1] = run_filter_sum_20;
+section_key[2] = reorder_row_alpha;
+section_key[3] = reorder_row_var;
+section_key[4] = run_filter_sum_10;
+section_key[5] = initialize_view;
+
 
 function initialize_view(){
-  console.log('--------- initializing view');
+  console.log('initializing view');
   cgm.update_view({'N_row_sum':'all'})
 }
 
-function run_reorder(){
-  console.log('--------- sum filtering');
+function run_filter_sum_20(){
+  console.log('sum filtering');
   cgm.update_view({'N_row_sum':20})
+}
+
+function reorder_row_alpha(){
+  console.log('reorder row alpha')
+  click_reorder_button('row','alpha');
+}
+
+function reorder_row_var(){
+  console.log('reorder row variance')
+  click_reorder_button('row','rankvar');
+}
+
+function run_filter_sum_10(){
+  console.log('sum filtering');
+  cgm.update_view({'N_row_sum':10})
 }
 
 function update_section(i){
 
   var inst_function = section_key[i];
 
+  console.log('\nsection '+String(i));
+
   if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
+    console.log('do not wait')
     inst_function();
   } else {
+
+    // need to check that you are in the same section
+    ///////////////
+
+    console.log('--- wait until buttons not disabled')
     setTimeout(inst_function, 2000);
   }
-
-  ////////////////////////////////////////
-  //  plan
-  ////////////////////////////////////////
-  // 1) if buttons are not active, then wait 2 seconds and check again
-
-  // 2) if after two seconds you are still in the same section and buttons
-  // are active, then redo transformation
-
-  // if (i === 0){
-  //   if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-  //     cgm.update_view({'N_row_sum':'all'})
-  //   }
-  // }
-  // if (i===1){
-  //   if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-  //     cgm.update_view({'N_row_sum':20})
-  //   }
-  // }
-
-  // if (i===2) {
-  //   if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-  //     click_reorder_button('row','alpha');
-  //   }
-  // }
-
-  // if (i===3) {
-  //   if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-  //     cgm.update_view({'N_row_sum':10})
-  //   }
-  // }
-
-  // if (i===4) {
-  //   if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
-  //     cgm.update_view({'N_row_sum':'all'})
-  //   }
-  // }
 
 }
