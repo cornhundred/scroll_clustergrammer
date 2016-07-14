@@ -1,3 +1,15 @@
+// make text section
+d3.json('tutorial_info.json', function(tutorial_info){
+
+  d3.select('#sections')
+    .selectAll('.instructions')
+    .data(tutorial_info)
+    .enter()
+    .append('div')
+    .append('text')
+    .text('here')
+
+});
 
 var ini_window_height = window.innerHeight - 100;
 if (ini_window_height > 800){
@@ -16,7 +28,6 @@ d3.json('json/mult_view.json', function(network_data){
   var args = {
     root: '#graph',
     'network_data': network_data
-    // 'about':'Zoom, scroll, and click buttons to interact with the clustergram.'
   };
 
   // resize_container(args);
