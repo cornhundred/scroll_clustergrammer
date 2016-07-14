@@ -6,8 +6,20 @@ d3.json('tutorial_info.json', function(tutorial_info){
     .data(tutorial_info)
     .enter()
     .append('div')
-    .append('text')
-    .text('here')
+    .each(function(d){
+
+      var paragraphs = d.text;
+
+      d3.select(this)
+        .selectAll('p')
+        .data(paragraphs)
+        .enter()
+        .append('p')
+        .text(function(p){
+          return p;
+        })
+
+    });
 
 });
 
