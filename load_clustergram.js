@@ -1,4 +1,6 @@
+
 // make text section
+var tutorial_info;
 d3.json('tutorial_info.json', function(tutorial_info){
 
   d3.select('#sections')
@@ -6,7 +8,12 @@ d3.json('tutorial_info.json', function(tutorial_info){
     .data(tutorial_info)
     .enter()
     .append('div')
+    .classed('instruction', true)
     .each(function(d){
+
+      d3.select(this)
+        .append('h3')
+        .text(d.title)
 
       var paragraphs = d.text;
 
@@ -21,6 +28,8 @@ d3.json('tutorial_info.json', function(tutorial_info){
 
     });
 
+    console.log(tutorial_info)
+
 });
 
 var ini_window_height = window.innerHeight - 100;
@@ -34,30 +43,21 @@ d3.select('#graph')
   .style('height', ini_window_height+'px');
 
 
+// make clustergram
+////////////////////////////////
 d3.json('json/mult_view.json', function(network_data){
 
-  // define arguments object
   var args = {
     root: '#graph',
     'network_data': network_data
   };
-
-  // resize_container(args);
-
-  // d3.select(window).on('resize',function(){
-  //   resize_container(args);
-  //   cgm.resize_viz();
-  // });
-
   cgm = Clustergrammer(args);
-
   ini_scroll();
 
 });
 
 
 function ini_scroll(){
-
   // define the container and graph
   var gs = graphScroll()
       .container(d3.select('#container'))
@@ -66,7 +66,6 @@ function ini_scroll(){
       .on('active', function(i){
         update_section_db(i);
       });
-
 }
 
 function click_reorder_button(inst_rc, inst_order){
@@ -74,10 +73,8 @@ function click_reorder_button(inst_rc, inst_order){
     .filter(function(){
       return this.__data__ == inst_order;
     })[0];
-
   $(inst_button).click();
 }
-
 
 var section_key = {};
 section_key[0] = initialize_view;
@@ -87,7 +84,6 @@ section_key[3] = reorder_row_var;
 section_key[4] = run_filter_sum_10;
 section_key[5] = initialize_view;
 section_key[6] = run_conclusions;
-
 
 function initialize_view(){
   console.log('initializing view');
@@ -126,9 +122,6 @@ var update_section_db = _.debounce(update_section, 1500);
 
 function update_section(current_section){
 
-  console.log('previous_section: '+String(prev_section))
-  console.log('curent_section '+String(current_section));
-
   if (prev_section != current_section){
 
     prev_section = current_section;
@@ -143,7 +136,6 @@ function update_section(current_section){
     } else {
       ///////////////
       // need to check that you are in the same section
-      console.log('--- wait until buttons not disabled')
       setTimeout(inst_function, 2000);
     }
 
