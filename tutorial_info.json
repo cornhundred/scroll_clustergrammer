@@ -3,7 +3,7 @@
     "title": "Introduction",
     "text": [
       "Clustergrammer enables users to generate interactive and shareable visualizations by uploading a matrix.",
-      "<em id='highlight_word'>Scroll</em> down to see some of Clustergrammer's interactive features."
+      "<em class='highlight_word'>Scroll down</em> or <em class='highlight_word'>interact</em> to see some of Clustergrammer's interactive features."
     ],
     "run_function": "initialize_view"
   },

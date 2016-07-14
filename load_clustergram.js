@@ -7,15 +7,15 @@ function animate_arrow() {
   d3.select('#scroll_arrow')
     .transition()
     .ease('linear')
-    .style('margin-top', '0px')
-    .transition()
-    .ease('linear')
-    .duration(repeat_time)
-    .style('margin-top', '15px')
+    .style('margin-top', '-15px')
     .transition()
     .ease('linear')
     .duration(repeat_time)
     .style('margin-top', '0px')
+    .transition()
+    .ease('linear')
+    .duration(repeat_time)
+    .style('margin-top', '-15px')
     .each("end", animate_arrow);
 }
 
