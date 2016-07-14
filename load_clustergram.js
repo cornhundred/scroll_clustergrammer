@@ -155,6 +155,8 @@ section_fun['run_conclusions'] = function run_conclusions(){
 
 section_fun['zoom_and_pan'] = function run_conclusions(){
   console.log('zoom_and_pan');
+  setTimeout(function(){cgm.zoom(3)}, 0);
+  setTimeout(function(){cgm.zoom(1)}, 1500);
 }
 
 
