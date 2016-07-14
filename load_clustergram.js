@@ -35,8 +35,9 @@ d3.json('tutorial_info.json', function(tmp_info){
 });
 
 var ini_window_height = window.innerHeight - 100;
-if (ini_window_height > 800){
-  ini_window_height = 800;
+var max_height = 700;
+if (ini_window_height > max_height){
+  ini_window_height = max_height;
 }
 
 var prev_section = 0;
@@ -55,6 +56,9 @@ d3.json('json/mult_view.json', function(network_data){
   };
   cgm = Clustergrammer(args);
   ini_scroll();
+
+  d3.select('#source')
+    .style('display','block');
 
 });
 
