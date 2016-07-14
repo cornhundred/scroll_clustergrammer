@@ -1,4 +1,23 @@
+
 var tutorial_info;
+
+function animate_arrow() {
+  var repeat_time = 600;
+
+  d3.select('#scroll_arrow')
+    .transition()
+    .ease('linear')
+    .style('margin-top', '0px')
+    .transition()
+    .ease('linear')
+    .duration(repeat_time)
+    .style('margin-top', '15px')
+    .transition()
+    .ease('linear')
+    .duration(repeat_time)
+    .style('margin-top', '0px')
+    .each("end", animate_arrow);
+}
 
 // make text section
 var tutorial_info;
@@ -14,7 +33,7 @@ d3.json('tutorial_info.json', function(tmp_info){
 
       d3.select(this)
         .append('h3')
-        .text(d.title)
+        .text(d.title);
 
       var paragraphs = d.text;
 
@@ -24,9 +43,23 @@ d3.json('tutorial_info.json', function(tmp_info){
         .enter()
         .append('p')
         .classed('instruction_text', true)
-        .text(function(p){
+        .html(function(p){
           return p;
-        })
+        });
+
+      if (d.title === 'Introduction'){
+
+        d3.select(this)
+          .append('text')
+          .classed('fa',true)
+          .classed('fa-caret-down',true)
+          .classed('icon_buttons',true)
+          .attr('id', 'scroll_arrow')
+          .style('font-size','80px')
+          .style('text-align', 'center')
+          .style('width','100%');
+
+      }
 
     });
 
@@ -59,6 +92,8 @@ d3.json('json/mult_view.json', function(network_data){
 
   d3.select('#source')
     .style('display','block');
+
+  animate_arrow();
 
 });
 
