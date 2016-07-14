@@ -4,7 +4,7 @@ if (ini_window_height > 800){
   ini_window_height = 800;
 }
 
-var inst_section = 0;
+var prev_section = 0;
 
 d3.select('#graph')
   .style('height', ini_window_height+'px');
@@ -68,7 +68,9 @@ section_key[6] = run_conclusions;
 
 function initialize_view(){
   console.log('initializing view');
-  cgm.update_view({'N_row_sum':'all'})
+  click_reorder_button('row','clust');
+  click_reorder_button('col ','clust');
+  cgm.update_view({'N_row_sum':'all'});
 }
 
 function run_filter_sum_20(){
@@ -77,12 +79,12 @@ function run_filter_sum_20(){
 }
 
 function reorder_row_alpha(){
-  console.log('reorder row alpha')
+  console.log('reorder row alpha');
   click_reorder_button('row','alpha');
 }
 
 function reorder_row_var(){
-  console.log('reorder row variance')
+  console.log('reorder row variance');
   click_reorder_button('row','rankvar');
 }
 
@@ -92,33 +94,36 @@ function run_filter_sum_10(){
 }
 
 function run_conclusions(){
-  console.log('in conclusion')
+  console.log('in conclusion');
   click_reorder_button('row','clust');
   click_reorder_button('col ','clust');
 }
 
 var update_section_db = _.debounce(update_section, 1500);
 
-function update_section(i){
+function update_section(current_section){
 
-  if (inst_section != i){
+  console.log('previous_section: '+String(prev_section))
+  console.log('curent_section '+String(current_section));
 
-    inst_section = i;
+  if (prev_section != current_section){
 
-    var inst_function = section_key[i];
+    prev_section = current_section;
 
-    console.log('\nsection '+String(i));
+    var inst_function = section_key[current_section];
 
+    // run if buttons are active
     if (d3.select('.toggle_col_order').select('button').attr('disabled') === null){
       inst_function();
+
+    // wait if still transitioning
     } else {
-
-      // need to check that you are in the same section
       ///////////////
-
+      // need to check that you are in the same section
       console.log('--- wait until buttons not disabled')
       setTimeout(inst_function, 2000);
     }
+
   } else {
     console.log('already in section - do not run\n')
   }
