@@ -67,7 +67,7 @@ d3.json('tutorial_info.json', function(tmp_info){
 
 });
 
-var ini_window_height = window.innerHeight - 100;
+var ini_window_height = window.innerHeight - 150;
 var max_height = 700;
 if (ini_window_height > max_height){
   ini_window_height = max_height;
