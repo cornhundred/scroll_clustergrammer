@@ -5,11 +5,28 @@
       "Clustergrammer enables users to generate interactive and shareable visualizations by uploading a matrix.",
       "This will overview some of Clustergrammer's features."
     ],
-    "function": "initialize_view"
+    "run_function": "initialize_view"
   },
   {
     "title": "Zooming and Panning",
-    "text": ["You can zoom and pan into the visualization."],
-    "function": "initialize_view"
+    "text": [
+      "You can zoom and pan into the visualization."
+    ],
+    "run_function": "zoom_and_pan"
+  },
+  {
+    "title": "Filter top 20 rows",
+    "text": [
+      "Filter by sum for the top 20 rows.",
+      "something"
+    ],
+    "run_function": "run_filter_sum_20"
+  },
+  {
+    "title": "Conclusion",
+    "text": [
+      "In conclusion ... "
+    ],
+    "run_function": "run_conclusions"
   }
 ]
