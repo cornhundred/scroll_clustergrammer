@@ -10,7 +10,7 @@
   {
     "title": "Zooming and Panning",
     "text": [
-      "You can zoom and pan into large visualizations."
+      "You can zoom and pan, which is useful for large matrices."
     ],
     "run_function": "zoom_and_pan"
   },
