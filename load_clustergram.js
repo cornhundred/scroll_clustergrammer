@@ -160,7 +160,7 @@ var section_fun = {};
 section_fun['initialize_view'] = function(){
   console.log('initializing view');
   click_reorder_button('row','clust');
-  click_reorder_button('col ','clust');
+  click_reorder_button('col','clust');
   cgm.update_view({'N_row_sum':'all'});
 }
 
@@ -180,16 +180,8 @@ section_fun['run_filter_var_10'] = function(){
   cgm.update_view({'N_row_var':10});
 }
 
-section_fun['run_reorder_row_alpha'] = function(){
-  console.log('reorder row alpha');
-  click_reorder_button('row','alpha');
-}
-
 section_fun['run_reorder_row_var'] = function(){
-  console.log('reorder row variance');
-
   highlight_sidebar_element(cgm.params, 'toggle_row_order');
-
   click_reorder_button('row','rankvar');
 }
 
@@ -213,6 +205,8 @@ section_fun['run_reorder_single_row'] = function(){
 
   var wait_click = 500;
   setTimeout(sim_click, wait_click, params, 'double', x_trans, y_trans);
+  var wait_reorder = wait_click + 300;
+  setTimeout(fire_double_click_row, wait_reorder, params, inst_element);
 }
 
 section_fun['run_conclusions'] = function(){
@@ -321,3 +315,25 @@ function get_row_element(params, inst_row){
 
   return inst_element;
 }
+
+function fire_double_click_row(params, inst_element){
+  $(inst_element).d3DblClick();
+}
+
+// allows doubleclicking on d3 element
+jQuery.fn.d3DblClick = function () {
+  this.each(function (i, e) {
+    var evt = document.createEvent("MouseEvents");
+    evt.initMouseEvent("dblclick", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    e.dispatchEvent(evt);
+  });
+};
+
+jQuery.fn.d3Click = function () {
+  this.each(function (i, e) {
+    var evt = document.createEvent("MouseEvents");
+    evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false,
+      false, false, false, 0, null);
+    e.dispatchEvent(evt);
+  });
+};
