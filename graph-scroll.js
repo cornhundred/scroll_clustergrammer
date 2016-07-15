@@ -16,7 +16,7 @@ function graphScroll() {
   function reposition(){
     var i1 = 0
     sectionPos.forEach(function(d, i){
-      if (d < pageYOffset - containerStart + 200) i1 = i
+      if (d < pageYOffset - containerStart + 400) i1 = i
     })
     i1 = Math.min(n - 1, i1)
     if (i != i1){

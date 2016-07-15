@@ -12,7 +12,7 @@
     "text": [
       "Zoom and pan by scrolling and dragging the matrix."
     ],
-    "run_function": "zoom_and_pan"
+    "run_function": "run_zoom_and_pan"
   },
   {
     "title": "Reordering using buttons",
@@ -20,7 +20,7 @@
       "Rows and columns can be reordered using the reorder buttons.",
       "Here rows are being ordered based on their variance."
     ],
-    "run_function": "reorder_row_var"
+    "run_function": "run_reorder_row_var"
   },
   {
     "title": "More reordering options",
@@ -28,7 +28,7 @@
       "You can also reorder the matrix based on the data in a single row or column.",
       "Here rows are being ordered based on the values in the row EGFR."
     ],
-    "run_function": "reorder_row_var"
+    "run_function": "run_reorder_row_var"
   },
   {
     "title": "Filter rows",
@@ -39,7 +39,7 @@
     "run_function": "run_filter_var_10"
   },
   {
-    "title": "Conclusion",
+    "title": "Conclusions",
     "text": [
       "In conclusion ... "
     ],

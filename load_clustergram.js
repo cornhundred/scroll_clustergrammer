@@ -56,10 +56,10 @@ d3.json('tutorial_info.json', function(tmp_info){
     .enter()
     .append('div')
     .classed('instruction', true)
-    .style('padding-right','15px')
+    .style('padding-right','5px')
     .each(function(d){
 
-      if (d.title === 'Conclusion') {
+      if (d.title === 'Conclusions') {
         d3.select(this)
           .style('margin-top','200px')
           .style('height', function(){
@@ -157,35 +157,35 @@ function click_reorder_button(inst_rc, inst_order){
 var section_fun = {};
 
 
-section_fun['initialize_view'] = function initialize_view(){
+section_fun['initialize_view'] = function(){
   console.log('initializing view');
   click_reorder_button('row','clust');
   click_reorder_button('col ','clust');
   cgm.update_view({'N_row_sum':'all'});
 }
 
-section_fun['run_filter_sum_10'] = function run_filter_sum_10(){
+section_fun['run_filter_sum_10'] = function(){
   console.log('sum filtering');
   cgm.update_view({'N_row_sum':10});
 }
 
-section_fun['run_filter_sum_20'] = function run_filter_sum_20(){
+section_fun['run_filter_sum_20'] = function(){
   console.log('sum filtering');
   cgm.update_view({'N_row_sum':20});
 }
 
-section_fun['run_filter_var_10'] = function run_filter_var_10(){
+section_fun['run_filter_var_10'] = function(){
   console.log('variance filtering');
   highlight_sidebar_element(cgm.params, 'slider_N_row_sum');
   cgm.update_view({'N_row_var':10});
 }
 
-section_fun['reorder_row_alpha'] = function reorder_row_alpha(){
+section_fun['run_reorder_row_alpha'] = function(){
   console.log('reorder row alpha');
   click_reorder_button('row','alpha');
 }
 
-section_fun['reorder_row_var'] = function reorder_row_var(){
+section_fun['run_reorder_row_var'] = function(){
   console.log('reorder row variance');
 
   highlight_sidebar_element(cgm.params, 'toggle_row_order');
@@ -193,13 +193,13 @@ section_fun['reorder_row_var'] = function reorder_row_var(){
   click_reorder_button('row','rankvar');
 }
 
-section_fun['run_conclusions'] = function run_conclusions(){
+section_fun['run_conclusions'] = function(){
   console.log('in conclusion');
   click_reorder_button('row','clust');
   click_reorder_button('col ','clust');
 }
 
-section_fun['zoom_and_pan'] = function run_conclusions(){
+section_fun['run_zoom_and_pan'] = function(){
   console.log('zoom_and_pan');
   setTimeout(function(){cgm.zoom(3)}, 0);
   setTimeout(function(){cgm.zoom(1)}, 1500);
@@ -254,3 +254,36 @@ function highlight_sidebar_element(params, highlight_class){
   }
 
 }
+
+function sim_click(params, single_double, pos_x, pos_y){
+
+  var click_duration = 200;
+
+  var click_circle = d3.select(params.root+' .viz_svg')
+    .append('circle')
+    .attr('cx',pos_x)
+    .attr('cy',pos_y)
+    .attr('r',25)
+    .style('stroke','black')
+    .style('stroke-width','3px')
+    .style('fill','#007f00')
+    .style('opacity',0.5);
+
+  if (single_double === 'double'){
+    click_circle
+      .transition().duration(click_duration)
+      .style('opacity',0.0)
+      .transition().duration(50)
+      .style('opacity',0.5)
+      .transition().duration(click_duration)
+      .style('opacity',0.0)
+      .remove();
+  } else {
+    click_circle
+      .transition().duration(click_duration)
+      .style('opacity',0.0)
+      .transition().duration(250)
+      .remove();
+  }
+
+};
