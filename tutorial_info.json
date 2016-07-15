@@ -31,12 +31,12 @@
     "run_function": "reorder_row_var"
   },
   {
-    "title": "Filter top 20 rows",
+    "title": "Filter rows",
     "text": [
-      "Filter by sum for the top 20 rows.",
-      "something"
+      "Filtering your data to reduce dimensionality can be useful for investegating complex datasets.",
+      "Clustergrammer allows you to filter your rows based on their sum or variance - here we are filtering for the top 10 rows based on variance."
     ],
-    "run_function": "run_filter_sum_20"
+    "run_function": "run_filter_var_10"
   },
   {
     "title": "Conclusion",

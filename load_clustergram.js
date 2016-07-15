@@ -129,12 +129,17 @@ section_fun['initialize_view'] = function initialize_view(){
 
 section_fun['run_filter_sum_10'] = function run_filter_sum_10(){
   console.log('sum filtering');
-  cgm.update_view({'N_row_sum':10})
+  cgm.update_view({'N_row_sum':10});
 }
 
 section_fun['run_filter_sum_20'] = function run_filter_sum_20(){
   console.log('sum filtering');
-  cgm.update_view({'N_row_sum':20})
+  cgm.update_view({'N_row_sum':20});
+}
+
+section_fun['run_filter_var_10'] = function run_filter_var_10(){
+  console.log('variance filtering');
+  cgm.update_view({'N_row_var':10});
 }
 
 section_fun['reorder_row_alpha'] = function reorder_row_alpha(){
