@@ -10,7 +10,7 @@
   {
     "title": "Zooming and Panning",
     "text": [
-      "You can zoom and pan, which is useful for large matrices."
+      "Zoom and pan by scrolling and dragging the matrix."
     ],
     "run_function": "zoom_and_pan"
   },

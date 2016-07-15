@@ -1,5 +1,17 @@
 
 var tutorial_info;
+var ini_window_height = window.innerHeight - 150;
+var max_height = 700;
+
+if (ini_window_height > max_height){
+  ini_window_height = max_height;
+}
+
+d3.select('#source')
+  .style('margin-top', function(){
+    var inst_height = ini_window_height + 200;
+    return inst_height+'px'
+  });
 
 function animate_arrow() {
   var repeat_time = 600;
@@ -24,16 +36,26 @@ var tutorial_info;
 d3.json('tutorial_info.json', function(tmp_info){
 
   d3.select('#sections')
-    .selectAll('.instructions')
+    .selectAll('.instruction')
     .data(tmp_info)
     .enter()
     .append('div')
     .classed('instruction', true)
     .each(function(d){
 
+      if (d.title === 'Conclusion') {
+        d3.select(this)
+          .style('margin-top','200px')
+          .style('height', function(){
+            var inst_height = ini_window_height;
+            return inst_height + 'px';
+          });
+      }
+
       d3.select(this)
         .append('h3')
         .text(d.title);
+
 
       var paragraphs = d.text;
 
@@ -67,11 +89,6 @@ d3.json('tutorial_info.json', function(tmp_info){
 
 });
 
-var ini_window_height = window.innerHeight - 150;
-var max_height = 700;
-if (ini_window_height > max_height){
-  ini_window_height = max_height;
-}
 
 var prev_section = 0;
 
@@ -139,6 +156,7 @@ section_fun['run_filter_sum_20'] = function run_filter_sum_20(){
 
 section_fun['run_filter_var_10'] = function run_filter_var_10(){
   console.log('variance filtering');
+  highlight_sidebar_element(cgm.params, 'slider_N_row_sum');
   cgm.update_view({'N_row_var':10});
 }
 
@@ -150,14 +168,7 @@ section_fun['reorder_row_alpha'] = function reorder_row_alpha(){
 section_fun['reorder_row_var'] = function reorder_row_var(){
   console.log('reorder row variance');
 
-  var highlight_class = 'toggle_row_order';
-  var duration = 4000;
-  d3.select(cgm.params.root+' .'+highlight_class)
-    .style('background','#007f00')
-    .style('box-shadow','0px 0px 10px 5px #007f00')
-    .transition().duration(1).delay(duration)
-    .style('background','#FFFFFF')
-    .style('box-shadow','none');
+  highlight_sidebar_element(cgm.params, 'toggle_row_order');
 
   click_reorder_button('row','rankvar');
 }
@@ -200,6 +211,26 @@ function update_section(current_section){
 
   } else {
     console.log('already in section - do not run\n')
+  }
+
+}
+
+function highlight_sidebar_element(params, highlight_class){
+
+  var duration = 4000;
+
+  if (highlight_class.indexOf('slider') < 0){
+    d3.select(params.root+' .'+highlight_class)
+      .style('background','#007f00')
+      .style('box-shadow','0px 0px 10px 5px #007f00')
+      .transition().duration(1).delay(duration)
+      .style('background','#FFFFFF')
+      .style('box-shadow','none');
+  } else {
+    d3.select(params.root+' .'+highlight_class)
+      .style('box-shadow','0px 0px 10px 5px #007f00')
+      .transition().duration(1).delay(duration)
+      .style('box-shadow','none');
   }
 
 }
