@@ -10,9 +10,25 @@
   {
     "title": "Zooming and Panning",
     "text": [
-      "You can zoom and pan into the visualization."
+      "You can zoom and pan into large visualizations."
     ],
     "run_function": "zoom_and_pan"
+  },
+  {
+    "title": "Reordering using buttons",
+    "text": [
+      "Rows and columns can be reordered using the reorder buttons.",
+      "Here rows are being ordered based on their variance."
+    ],
+    "run_function": "reorder_row_var"
+  },
+  {
+    "title": "More reordering options",
+    "text": [
+      "You can also reorder the matrix based on the data in a single row or column.",
+      "Here rows are being ordered based on the values in the row EGFR."
+    ],
+    "run_function": "reorder_row_var"
   },
   {
     "title": "Filter top 20 rows",
