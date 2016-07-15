@@ -3694,12 +3694,12 @@ var Clustergrammer =
     var cgm = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
 
 
-    if (cgm === false) {
-      console.log('no cgm passed to make_row_dendro_triangles');
-    } else {
-      console.log('passed cgm to make_row_dendro_triangles');
-      console.log(cgm);
-    }
+    // if (cgm === false) {
+    //   console.log('no cgm passed to make_row_dendro_triangles');
+    // } else {
+    //   console.log('passed cgm to make_row_dendro_triangles');
+    //   console.log(cgm);
+    // }
 
     var dendro_info = calc_row_dendro_triangles(params);
 
@@ -6501,12 +6501,12 @@ var Clustergrammer =
     var cgm = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
 
 
-    if (cgm === false) {
-      console.log('no cgm passed to make_row_dendro');
-    } else {
-      console.log('passed cgm to make_row_dendro');
-      console.log(cgm);
-    }
+    // if (cgm === false) {
+    //   console.log('no cgm passed to make_row_dendro');
+    // } else {
+    //   console.log('passed cgm to make_row_dendro');
+    //   console.log(cgm);
+    // }
 
     var spillover_width = params.viz.dendro_room.row + params.viz.uni_margin;
 

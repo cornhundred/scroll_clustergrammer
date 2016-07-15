@@ -1,6 +1,8 @@
 
 var tutorial_info;
 var ini_window_height = window.innerHeight - 150;
+var right_graph_margin = 315;
+var ini_window_width = Number(d3.select('#container').style('width').replace('px','')) - right_graph_margin;
 var max_height = 700;
 
 if (ini_window_height > max_height){
@@ -41,6 +43,7 @@ d3.json('tutorial_info.json', function(tmp_info){
     .enter()
     .append('div')
     .classed('instruction', true)
+    .style('padding-right','15px')
     .each(function(d){
 
       if (d.title === 'Conclusion') {
@@ -50,6 +53,9 @@ d3.json('tutorial_info.json', function(tmp_info){
             var inst_height = ini_window_height;
             return inst_height + 'px';
           });
+      } else if (d.title === 'Introduction'){
+        d3.select(this)
+          .style('margin-top','50px');
       }
 
       d3.select(this)
@@ -93,6 +99,7 @@ d3.json('tutorial_info.json', function(tmp_info){
 var prev_section = 0;
 
 d3.select('#graph')
+  .style('width', ini_window_width+'px')
   .style('height', ini_window_height+'px');
 
 
