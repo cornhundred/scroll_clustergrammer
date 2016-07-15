@@ -28,7 +28,7 @@
       "You can also reorder the matrix based on the data in a single row or column.",
       "Here rows are being ordered based on the values in the row EGFR."
     ],
-    "run_function": "run_reorder_row_var"
+    "run_function": "run_reorder_single_row"
   },
   {
     "title": "Filter rows",

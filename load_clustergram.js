@@ -193,6 +193,28 @@ section_fun['run_reorder_row_var'] = function(){
   click_reorder_button('row','rankvar');
 }
 
+section_fun['run_reorder_single_row'] = function(){
+
+  var params = cgm.params;
+
+  var inst_element = get_row_element(params, 'EGFR');
+
+  var group_trans = d3.select(inst_element).attr('transform');
+
+  var container_trans = d3.select(params.root+' .clust_container')
+    .attr('transform')
+    .split(',')[1].replace(')','');
+
+  var x_trans = params.viz.norm_labels.width.row * 0.9;
+
+  var row_trans = group_trans.split(',')[1].replace(')','');
+  var y_trans = String(Number(row_trans) + Number(container_trans) +
+    params.viz.rect_height/2);
+
+  var wait_click = 500;
+  setTimeout(sim_click, wait_click, params, 'double', x_trans, y_trans);
+}
+
 section_fun['run_conclusions'] = function(){
   console.log('in conclusion');
   click_reorder_button('row','clust');
@@ -286,4 +308,16 @@ function sim_click(params, single_double, pos_x, pos_y){
       .remove();
   }
 
-};
+}
+
+
+function get_row_element(params, inst_row){
+
+  var inst_element = d3.selectAll(params.root+' .row_label_group')
+    .filter(function(){
+      var inst_data = this.__data__;
+      return inst_data.name == inst_row;
+    })[0][0];
+
+  return inst_element;
+}
