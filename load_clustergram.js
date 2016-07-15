@@ -1,17 +1,30 @@
 
 var tutorial_info;
-var ini_window_height = window.innerHeight - 150;
+var graph_height = window.innerHeight - 150;
 var right_graph_margin = 315;
-var ini_window_width = Number(d3.select('#container').style('width').replace('px','')) - right_graph_margin;
-var max_height = 700;
+var graph_width = Number(d3.select('#container').style('width').replace('px','')) - right_graph_margin;
 
-if (ini_window_height > max_height){
-  ini_window_height = max_height;
+var max_height = 800;
+var max_width = 1300;
+
+var matrix_width = graph_width - 200;
+
+if (graph_height > max_height){
+  graph_height = max_height;
 }
+
+if (graph_width > max_width){
+  graph_width = max_width;
+}
+
+if (graph_height > 1.5*matrix_width){
+  graph_height = 1.5*matrix_width;
+}
+
 
 d3.select('#source')
   .style('margin-top', function(){
-    var inst_height = ini_window_height + 200;
+    var inst_height = graph_height + 200;
     return inst_height+'px'
   });
 
@@ -50,7 +63,7 @@ d3.json('tutorial_info.json', function(tmp_info){
         d3.select(this)
           .style('margin-top','200px')
           .style('height', function(){
-            var inst_height = ini_window_height;
+            var inst_height = graph_height;
             return inst_height + 'px';
           });
       } else if (d.title === 'Introduction'){
@@ -99,8 +112,8 @@ d3.json('tutorial_info.json', function(tmp_info){
 var prev_section = 0;
 
 d3.select('#graph')
-  .style('width', ini_window_width+'px')
-  .style('height', ini_window_height+'px');
+  .style('width', graph_width+'px')
+  .style('height', graph_height+'px');
 
 
 // make clustergram
