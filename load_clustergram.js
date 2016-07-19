@@ -178,6 +178,8 @@ section_fun['run_filter_sum_20'] = function(){
 
 section_fun['run_filter_var_10'] = function(){
   console.log('variance filtering');
+  click_reorder_button('row','clust');
+  click_reorder_button('col','clust');
   highlight_sidebar_element(cgm.params, 'slider_N_row_sum');
   cgm.update_view({'N_row_var':10});
 }
