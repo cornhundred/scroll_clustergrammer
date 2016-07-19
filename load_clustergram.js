@@ -57,7 +57,7 @@ d3.json('tutorial_info.json', function(tmp_info){
     .append('div')
     .classed('instruction', true)
     .style('padding-right','12px')
-    .style('padding-left','12px')
+    // .style('padding-left','12px')
     // .style('background-color','green')
     .each(function(d){
 
