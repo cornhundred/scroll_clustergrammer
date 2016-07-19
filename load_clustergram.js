@@ -7,7 +7,7 @@ var graph_width = Number(d3.select('#container').style('width').replace('px','')
 var max_height = 800;
 var max_width = 1300;
 
-var matrix_width = graph_width - 200;
+var matrix_width = graph_width - 250;
 
 if (graph_height > max_height){
   graph_height = max_height;
@@ -56,7 +56,9 @@ d3.json('tutorial_info.json', function(tmp_info){
     .enter()
     .append('div')
     .classed('instruction', true)
-    .style('padding-right','5px')
+    .style('padding-right','12px')
+    .style('padding-left','12px')
+    // .style('background-color','green')
     .each(function(d){
 
       if (d.title === 'Conclusions') {
